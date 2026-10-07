@@ -1,0 +1,24 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      # Validation only: resolving the modules needs magento/framework from
+      # repo.magento.com, which requires access keys this repo does not hold.
+      - run: composer validate --strict --no-check-lock
