@@ -1,0 +1,48 @@
+{
+    "name": "magenxcommerce/magenxcommerce-modules",
+    "description": "Metapackage installing all Magenx Commerce companion Magento 2 modules for the headless storefront.",
+    "type": "metapackage",
+    "license": "MIT",
+    "keywords": [
+        "magento",
+        "magento2",
+        "graphql",
+        "headless",
+        "metapackage"
+    ],
+    "homepage": "https://github.com/magenxcommerce/magenxcommerce-modules",
+    "support": {
+        "issues": "https://github.com/magenxcommerce/magenxcommerce-modules/issues",
+        "source": "https://github.com/magenxcommerce/magenxcommerce-modules"
+    },
+    "require": {
+        "magenxcommerce/module-abandoned-checkout": "^1.0",
+        "magenxcommerce/module-admin-activity": "^1.0",
+        "magenxcommerce/module-ai-mcp": "^1.5",
+        "magenxcommerce/module-auto-product-links": "^1.1",
+        "magenxcommerce/module-best-seller-graph-ql": "^1.0",
+        "magenxcommerce/module-blog": "^2.0",
+        "magenxcommerce/module-blog-graph-ql": "^1.0",
+        "magenxcommerce/module-contact-confirmation": "^1.0",
+        "magenxcommerce/module-deal-graph-ql": "^1.0",
+        "magenxcommerce/module-garan-graph-ql": "^1.0",
+        "magenxcommerce/module-gdpr": "^1.0",
+        "magenxcommerce/module-gdpr-graph-ql": "^1.0",
+        "magenxcommerce/module-graph-ql-timing": "^1.0",
+        "magenxcommerce/module-helpdesk": "^1.0",
+        "magenxcommerce/module-helpdesk-graph-ql": "^1.0",
+        "magenxcommerce/module-platform": "^1.3",
+        "magenxcommerce/module-price-history-graph-ql": "^1.0",
+        "magenxcommerce/module-product-alert-graph-ql": "^1.1",
+        "magenxcommerce/module-product-attachments": "^1.1",
+        "magenxcommerce/module-product-feed": "^1.1",
+        "magenxcommerce/module-quick-search-graph-ql": "^1.0",
+        "magenxcommerce/module-reward": "^1.0",
+        "magenxcommerce/module-reward-graph-ql": "^1.0",
+        "magenxcommerce/module-rma": "^1.1",
+        "magenxcommerce/module-rma-graph-ql": "^1.1",
+        "magenxcommerce/module-sitemap": "^1.0",
+        "magenxcommerce/module-social-login-graph-ql": "^1.0",
+        "magenxcommerce/module-store-pickup-graph-ql": "^1.0"
+    }
+}
