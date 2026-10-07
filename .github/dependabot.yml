@@ -10,3 +10,17 @@ updates:
           - "*"
     commit-message:
       prefix: ci
+
+  - package-ecosystem: composer
+    directory: /
+    schedule:
+      interval: weekly
+    versioning-strategy: increase-if-necessary
+    allow:
+      - dependency-name: "magenxcommerce/*"
+    groups:
+      magenxcommerce-modules:
+        patterns:
+          - "magenxcommerce/*"
+    commit-message:
+      prefix: deps
