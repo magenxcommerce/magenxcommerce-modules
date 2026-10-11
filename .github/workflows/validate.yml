@@ -21,4 +21,6 @@ jobs:
 
       # Validation only: resolving the modules needs magento/framework from
       # repo.magento.com, which requires access keys this repo does not hold.
-      - run: composer validate --strict --no-check-lock
+      # --no-check-all: every module is required as "*" on purpose, which
+      # --strict alone rejects as an unbound constraint.
+      - run: composer validate --strict --no-check-all --no-check-lock
