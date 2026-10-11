@@ -20,8 +20,9 @@ composer update 'magenxcommerce/*'
 bin/magento setup:upgrade
 ```
 
-Every module is required with a caret constraint (`^x.y`), so minor and patch releases of any module are picked up by
-`composer update` without a new release of this package.
+Every module is required as `*`, so `composer update` installs the latest stable release of each module — minor,
+patch and major — without a new release of this package. Pin a module in the project's root `composer.json` (e.g.
+`"magenxcommerce/module-blog": "^2.0"`) to hold it back.
 
 ## Modules
 
@@ -34,11 +35,13 @@ Every module is required with a caret constraint (`^x.y`), so minor and patch re
 | [`module-best-seller-graph-ql`](https://github.com/magenxcommerce/module-best-seller-graph-ql) | `bestSellers` query and per-category PDP badge |
 | [`module-blog`](https://github.com/magenxcommerce/module-blog) | Headless blog: posts, categories, tags, related posts and products (admin authoring) |
 | [`module-blog-graph-ql`](https://github.com/magenxcommerce/module-blog-graph-ql) | GraphQL surface of `module-blog` |
+| [`module-catalog-graph-ql-batch`](https://github.com/magenxcommerce/module-catalog-graph-ql-batch) | Batches catalog rule / tier prices and rating summary for GraphQL product lists — no per-product queries |
 | [`module-contact-confirmation`](https://github.com/magenxcommerce/module-contact-confirmation) | Contact form confirmation |
 | [`module-deal-graph-ql`](https://github.com/magenxcommerce/module-deal-graph-ql) | `deals` query and `ProductInterface.deal`, driven by labelled Catalog Price Rules |
 | [`module-garan-graph-ql`](https://github.com/magenxcommerce/module-garan-graph-ql) | EU legal-guarantee notice and GARAN durability label (Regulation (EU) 2025/1960) |
 | [`module-gdpr`](https://github.com/magenxcommerce/module-gdpr) | Cookie registry, consent logging and data-subject request tracking |
 | [`module-gdpr-graph-ql`](https://github.com/magenxcommerce/module-gdpr-graph-ql) | GraphQL surface of `module-gdpr` |
+| [`module-graph-ql-app-server`](https://github.com/magenxcommerce/module-graph-ql-app-server) | PoC: serve `/graphql` from a FrankenPHP worker that keeps Magento bootstrapped in memory |
 | [`module-graph-ql-timing`](https://github.com/magenxcommerce/module-graph-ql-timing) | `Server-Timing` header on the GraphQL controller |
 | [`module-helpdesk`](https://github.com/magenxcommerce/module-helpdesk) | Support-ticket desk with admin agent workspace and IMAP email gateway |
 | [`module-helpdesk-graph-ql`](https://github.com/magenxcommerce/module-helpdesk-graph-ql) | GraphQL surface of `module-helpdesk` |
@@ -55,6 +58,8 @@ Every module is required with a caret constraint (`^x.y`), so minor and patch re
 | [`module-sitemap`](https://github.com/magenxcommerce/module-sitemap) | Rewrites XML sitemap URLs into the headless storefront's route shape |
 | [`module-social-login-graph-ql`](https://github.com/magenxcommerce/module-social-login-graph-ql) | `socialLogin` mutation verifying Google / Apple ID tokens |
 | [`module-store-pickup-graph-ql`](https://github.com/magenxcommerce/module-store-pickup-graph-ql) | In-store pickup carrier and store locations query |
+| [`module-stripe-payments-graph-ql`](https://github.com/magenxcommerce/module-stripe-payments-graph-ql) | GraphQL for Stripe Payments subscriptions: product options, customer subscriptions, cancellation |
+| [`module-stripe-shared-payment-tokens`](https://github.com/magenxcommerce/module-stripe-shared-payment-tokens) | Charges Stripe Shared Payment Tokens (`spt_…`) from agentic-commerce platforms via the stock Stripe placeOrder flow |
 
 All packages are published under the `magenxcommerce/` vendor; the table drops the prefix.
 
@@ -72,14 +77,13 @@ root `composer.json`:
 Modules that depend on a replaced one will then fail at runtime — `module-ai-mcp`, for example, requires
 `module-admin-activity`, `module-blog`, `module-gdpr`, `module-helpdesk`, `module-platform`, `module-product-feed`,
 `module-quick-search-graph-ql` and `module-rma`; `*-graph-ql` halves such as `module-rma-graph-ql` require
-their backend module.
+their backend module; the `module-stripe-*` modules require `stripe/module-payments`.
 
 ## Releasing
 
 Versions come from git tags (`vX.Y.Z`); `composer.json` carries no `version` field.
 
-- **Module minor / patch release** — nothing to do here; the caret constraint already allows it.
-- **New module** — add it to `require` as `^<major>.<minor>` of its first release, add a table row, tag a new
-  **minor** version of this package.
-- **Module major release** — raise its constraint to the new major, tag a new **major** version of this package.
+- **Module release (any)** — nothing to do here; `*` already allows it.
+- **New module** — tag its first release (`v1.0.0`) — `*` only matches stable tags — then add it to `require` as `*`,
+  add a table row, tag a new **minor** version of this package.
 - **Module removed** — drop it from `require`, tag a new **major** version of this package.
