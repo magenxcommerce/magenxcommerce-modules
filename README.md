@@ -82,9 +82,11 @@ their backend module; the `module-stripe-*` modules require `stripe/module-payme
 
 ## Releasing
 
-Versions come from git tags (`vX.Y.Z`); `composer.json` carries no `version` field.
+Versions come from git tags (`vX.Y.Z`); `composer.json` carries no `version` field. Release Please cuts them: on
+every push to `main` it opens or updates a release PR from the Conventional Commit messages, and merging that PR
+tags the release and updates `CHANGELOG.md`.
 
 - **Module release (any)** — nothing to do here; `*` already allows it.
-- **New module** — tag its first release (`v1.0.0`) — `*` only matches stable tags — then add it to `require` as `*`,
-  add a table row, tag a new **minor** version of this package.
-- **Module removed** — drop it from `require`, tag a new **major** version of this package.
+- **New module** — tag its first release (`v1.0.0`) — `*` only matches stable tags — then add it to `require` as `*`
+  and add a table row in a `feat:` commit, which makes a **minor** release of this package.
+- **Module removed** — drop it from `require` in a `feat!:` commit, which makes a **major** release of this package.
