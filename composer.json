@@ -24,6 +24,7 @@
         "magenxcommerce/module-blog": "*",
         "magenxcommerce/module-blog-graph-ql": "*",
         "magenxcommerce/module-catalog-graph-ql-batch": "*",
+        "magenxcommerce/module-checkout-fields-graph-ql": "*",
         "magenxcommerce/module-contact-confirmation": "*",
         "magenxcommerce/module-deal-graph-ql": "*",
         "magenxcommerce/module-garan-graph-ql": "*",

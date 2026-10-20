@@ -36,6 +36,7 @@ patch and major — without a new release of this package. Pin a module in the p
 | [`module-blog`](https://github.com/magenxcommerce/module-blog) | Headless blog: posts, categories, tags, related posts and products (admin authoring) |
 | [`module-blog-graph-ql`](https://github.com/magenxcommerce/module-blog-graph-ql) | GraphQL surface of `module-blog` |
 | [`module-catalog-graph-ql-batch`](https://github.com/magenxcommerce/module-catalog-graph-ql-batch) | Batches catalog rule / tier prices and rating summary for GraphQL product lists — no per-product queries |
+| [`module-checkout-fields-graph-ql`](https://github.com/magenxcommerce/module-checkout-fields-graph-ql) | Order comment and delivery date / time slot at checkout: `setCheckoutFieldsOnCart`, `Cart.checkout_fields`, echoed on orders and emails |
 | [`module-contact-confirmation`](https://github.com/magenxcommerce/module-contact-confirmation) | Contact form confirmation |
 | [`module-deal-graph-ql`](https://github.com/magenxcommerce/module-deal-graph-ql) | `deals` query and `ProductInterface.deal`, driven by labelled Catalog Price Rules |
 | [`module-garan-graph-ql`](https://github.com/magenxcommerce/module-garan-graph-ql) | EU legal-guarantee notice and GARAN durability label (Regulation (EU) 2025/1960) |
